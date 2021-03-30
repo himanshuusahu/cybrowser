@@ -21,6 +21,6 @@ pip install PyQt5
 ```bash
 pip install PyQtWebEngine
 ```
-#Screenshot
+# Screenshot
 ![Screenshot](Screenshot.png)
 
