@@ -2,14 +2,17 @@ import sys
 from PyQt5 import QtGui
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-from PyQt5.QtWebEngineWidgets import *
+from PyQt5.QtWebEngineWidgets import * 
+from PyQt5.QtPrintSupport import * 
 
 
 class MainWindow(QMainWindow):
 
     def __init__(self):
 
+
         super(MainWindow, self).__init__()
+     
         self.browser = QWebEngineView()
         self.browser.setUrl(QUrl('http://google.com'))
         self.setCentralWidget(self.browser)
@@ -20,10 +23,12 @@ class MainWindow(QMainWindow):
         self.addToolBar(navbar)
 
         reload_btn = QAction('Reload', self)
+        reload_btn.setStatusTip("Refresh page")
         reload_btn.triggered.connect(self.browser.reload)
         navbar.addAction(reload_btn)
 
         home_btn = QAction('Home', self)
+        home_btn.setStatusTip("Home")
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
 
@@ -34,10 +39,12 @@ class MainWindow(QMainWindow):
         self.browser.urlChanged.connect(self.update_url)
 
         back_btn = QAction('Back', self)
+        back_btn.setStatusTip("Back")
         back_btn.triggered.connect(self.browser.back)
         navbar.addAction(back_btn)
 
         forward_btn = QAction('Forward', self)
+        forward_btn.setStatusTip("Forward")
         forward_btn.triggered.connect(self.browser.forward)
         navbar.addAction(forward_btn)
 
